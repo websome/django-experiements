@@ -1,1 +1,1 @@
-# django-experiements
+# django-experiments
