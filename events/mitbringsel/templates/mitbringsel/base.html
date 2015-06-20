@@ -1,21 +1,14 @@
-<html>
-<head>
+{% extends 'material/frontend/base.html' %}
+{% load static %}
 
-</head>
-<body>
+{% block extrahead %}
+    <link href="{% static 'mitbringsel/styles.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Mitbringsel{% endblock %}
+{% block page_title %}<a href="{{ current_module.index_url }}">{{ current_module.label }}</a>{% endblock %}
+
+{% block page_logo %}{% endblock %}
+
 {% include 'material/includes/material_css.html' %}
 {% include 'material/includes/material_js.html' %}
-
-    <div id="content" class="{% block coltype %}colM{% endblock %}">
-        {% block pretitle %}{% endblock %}
-        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
-        {% block content %}
-        {% block object-tools %}{% endblock %}
-        {{ content }}
-        {% endblock %}
-        {% block sidebar %}{% endblock %}
-        <br class="clear" />
-    </div>
-
-</body>
-</html>

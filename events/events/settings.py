@@ -31,16 +31,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
+    # own
+	'mitbringsel',
+    # Material
+    'material',
+    'material.frontend',
+    'material.admin',
+    'easy_pjax',
+    # Standard django
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'material',
-    'material.frontend',
-    'material.admin',
-	'mitbringsel',
+    'django.contrib.admin',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,6 +56,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'material.frontend.middleware.SmoothNavigationMiddleware',
 )
 
 ROOT_URLCONF = 'events.urls'
@@ -105,3 +110,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# fix thought Template creation in forms.py will not result in errors
+from django.template.base import add_to_builtins
+add_to_builtins('material.templatetags.material_form')

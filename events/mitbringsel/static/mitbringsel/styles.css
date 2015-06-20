@@ -1,0 +1,27 @@
+body main .row, body main .breadcrumbs div {
+    padding: 10px;
+}
+html {
+    font-size: 18px;
+}
+
+.breadcrumbs {
+    text-transform: uppercase;
+}
+.breadcrumbs a {
+    padding: 0px 10px;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin: 1rem 0px 0.5rem;
+}
+
+ul#mitbringsel-list {
+    list-style-type: circle;
+    padding-left: 40px;
+}
+ul#mitbringsel-list li {
+    list-style-type: circle;
+}
