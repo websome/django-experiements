@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+
+{% block content_title %}
+    Mitbringsel
+{% endblock %}
+
+{% block content %}
+    {% if mitbringsel_list %}
+        <ul>
+        {% for mitbringsel in mitbringsel_list %}
+            <li>{{ mitbringsel.text }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Noch keine Mitbringsel registriert.</p>
+    {% endif %}
+{% endblock %}
