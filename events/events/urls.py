@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
    # url(r'^mitbringsel/', include('mitbringsel.urls')),
     url(r'', include(frontend_urls)),
-    url(r'^$', RedirectView.as_view(url='/mitbringsel')),
+    url(r'^$', RedirectView.as_view(url='/mitbringsel', permanent=True)),
 ]

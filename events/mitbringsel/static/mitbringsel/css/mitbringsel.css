@@ -1,4 +1,4 @@
-body main .row, body main .breadcrumbs div {
+body main .breadcrumbs div {
     padding: 10px;
 }
 html {
@@ -12,10 +12,9 @@ html {
     padding: 0px 10px;
 }
 
-h1 {
-    font-size: 2rem;
-    line-height: 2.5rem;
-    margin: 1rem 0px 0.5rem;
+.header {
+  color: #87BA8A;
+  font-weight: 300;
 }
 
 ul#mitbringsel-list {
@@ -24,4 +23,12 @@ ul#mitbringsel-list {
 }
 ul#mitbringsel-list li {
     list-style-type: circle;
+}
+
+.btn, .btn-large {
+    background-color: #388E3C;
+}
+
+.btn:hover, .btn-large:hover {
+    background-color: #4CAF50;
 }

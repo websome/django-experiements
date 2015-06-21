@@ -1,0 +1,29 @@
+{% extends 'mitbringsel/base_html.html' %}
+
+{% block favicon %}{% endblock %}
+
+{# block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock #}
+{% block page_logo %}
+    <i class="mdi-maps-local-restaurant large" style="color: #87BA8A"></i>
+{% endblock %}
+
+{% block menu %}
+    {% for module in modules %}
+        {% if current_module == module and module.menu %}
+        <li class="no-padding">
+            <ul class="collapsible" data-collapsible="expandable">
+                <li class="active">
+                    <a class="collapsible-header no-pjax"><i class="{{ module.icon }}"></i> {{ module.label|default:"" }}</a>
+                    <div class="collapsible-body" style="display: block;">
+                        {% include module.menu %}
+                    </div>
+                </li>
+            </ul>
+        </li>
+        {% else %}
+        <li class="no-padding">
+            <a class="collapsible-header no-pjax" href="{{ module.index_url }}"><i class="{{ module.icon }}"></i> {{ module.label|default:"" }}</a>
+        </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

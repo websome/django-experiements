@@ -1,0 +1,40 @@
+{% extends 'mitbringsel/base.html' %}
+
+
+{% block extrahead %}
+    {% load admin_static material_admin %}
+    <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
+    <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
+    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{% endblock %}
+
+{% block stylesheet %}{% endblock %}
+
+{% block menu %}
+
+    <li class="no-padding"><a class="collapsible-header no-pjax" href="/"><i class="mdi-navigation-arrow-back"></i> Back to website</a></li>
+    <li class="no-padding active">
+        <a class="collapsible-header active no-pjax" href="/admin/"><i class="mdi-action-settings-applications"></i> Administration</a>
+        <div class="collapsible-body" style="display:block">
+            <ul class="collapsible" data-collapsible="accordion">
+                {% get_app_list request as app_list %}
+                {% for app in app_list %}
+                <li class="header{% if app.active %} active{% endif %}">
+                    <a class="collapsible-header{% if app.active %} active{% endif %}">{{ app.name|truncatechars:23 }}</a>
+                    <div class="collapsible-body" {% if app.active %}style="display:block"{% endif %}>
+                        <ul>
+                            {% for model in app.models %}
+                            <li class="{% if model.active %}active{% endif %}">
+                                <a href="{{ model.admin_url }}">
+                                    <i class="fa adm-app-default adm-{{ app.app_label }}-{{ model.object_name|lower }}"></i> {{ model.name }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </li>
+{% endblock %}

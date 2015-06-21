@@ -1,29 +1,25 @@
-{% extends 'mitbringsel/base.html' %}
+{% extends 'mitbringsel/base_site.html' %}
 
 {% block breadcrumbs_items %}
     <a href="{% url 'mitbringsel:index' %}">Mitbringsel</a>
 {% endblock %}
 
-{% block content_title %}
+{% block site_title %}
     Mitbringsel
 {% endblock %}
 
-{% block content %}
-    <div class="row">
-        <h1>Mitbringsel</h1>
-
-        {% if mitbringsel_list %}
-            <ul id="mitbringsel-list">
-            {% for mitbringsel in mitbringsel_list %}
-                <li>{{ mitbringsel.text }}</li>
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>Noch keine Mitbringsel registriert.</p>
-        {% endif %}
+{% block site_content %}
+    {% if mitbringsel_list %}
+        <ul id="mitbringsel-list">
+        {% for mitbringsel in mitbringsel_list %}
+            <li>{{ mitbringsel.text }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Noch keine Mitbringsel registriert.</p>
+    {% endif %}
 
 
-        <a href="{% url 'mitbringsel:add'%}" class="btn btn-lg">Ich bringe etwas mit</a>
-    </div>
+    <a href="{% url 'mitbringsel:add'%}" class="btn btn-lg">Ich bringe etwas mit</a>
 
 {% endblock %}
